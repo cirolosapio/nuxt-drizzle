@@ -2,14 +2,39 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "lint": "eslint .",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "sql:up": "pnpm drizzle-kit push:pg",
+    "sql:pull": "pnpm drizzle-kit introspect:pg",
+    "sql:generate": "pnpm drizzle-kit generate:pg"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@types/pg": "^8.10.2",
+    "drizzle-kit": "^0.19.13",
+    "eslint": "^8.48.0",
     "nuxt": "^3.7.0"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.28.5",
+    "postgres": "^3.3.5"
+  },
+  "eslintConfig": {
+    "extends": "@nuxtjs/eslint-config-typescript",
+    "rules": {
+      "curly": [
+        "error",
+        "multi-or-nest"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   }
 }
